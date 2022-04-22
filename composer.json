@@ -1,0 +1,25 @@
+{
+  "name": "onion/database",
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "Onion\\Framework\\Database\\": "src/",
+      "__Proxy\\": "generated/__Proxy"
+    }
+  },
+  "require": {
+    "onion/interfaces": "@dev",
+    "onion/common": "@dev",
+    "onion/framework": "@dev",
+    "onion/event-loop": "@dev",
+    "doctrine/orm": "^2.11",
+    "doctrine/cache": "^1.11",
+    "doctrine/annotations": "^1.13",
+    "onion/proxy": "@dev",
+    "nette/php-generator": "^4.0",
+    "ramsey/uuid": "^4.3"
+  },
+  "require-dev": {
+    "symfony/cache": "^6.0"
+  }
+}
