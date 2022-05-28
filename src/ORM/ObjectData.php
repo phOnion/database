@@ -26,7 +26,7 @@ class ObjectData
 
     public function __construct(
         public readonly string $entityClass,
-        private readonly \ReflectionClass $reflection,
+        \ReflectionClass $reflection,
     ) {
         $entityAttributes = $reflection->getAttributes(Entity::class);
         if (!empty($entityAttributes)) {
