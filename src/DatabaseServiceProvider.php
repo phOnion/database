@@ -11,6 +11,8 @@ use Onion\Framework\Database\Drivers\SQLite\Driver as SQLiteDriver;
 use Onion\Framework\Database\Interfaces\ConnectionInterface;
 use Onion\Framework\Database\Interfaces\DriverInterface;
 use Onion\Framework\Database\ORM\EntityManager;
+use Onion\Framework\Database\ORM\Interfaces\EntityManagerInterface;
+use Onion\Framework\Database\ORM\Interfaces\RepositoryInterface;
 use Onion\Framework\Database\ORM\Interfaces\UnitOfWorkInterface;
 use Onion\Framework\Dependency\Interfaces\ContainerInterface;
 use Onion\Framework\Dependency\Interfaces\ServiceProviderInterface;
@@ -37,5 +39,7 @@ class DatabaseServiceProvider implements ServiceProviderInterface
             $c->has(ProxyFactoryInterface::class) ? $c->get(ProxyFactoryInterface::class) : null,
             $c->has(CacheInterface::class) ? $c->get(CacheInterface::class) : null,
         ));
+
+        $provider->bind(RepositoryInterface::class, fn (ContainerInterface $c, string $key) => $c->get(EntityManagerInterface::class)->getRepository($key));
     }
 }
